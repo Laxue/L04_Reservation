@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     //Variables
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker time;
     RadioGroup smoke;
     TextView display;
+    TextView display2;
     Button book;
     Button reset;
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.timePicker);
         smoke = findViewById(R.id.smokingqns);
         display = findViewById(R.id.display);
+        display2 = findViewById(R.id.display2);
         book = findViewById(R.id.book);
         reset = findViewById(R.id.reset);
 
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v){
             // Functionality for the button...
-
+            //I have no idea what I am doing. I am sorry.
             date.updateDate(2020,6,1);
             time.setHour(19);
             time.setMinute(30);
@@ -55,18 +59,28 @@ public class MainActivity extends AppCompatActivity {
             month = date.getMonth();
             year = date.getYear();
 
+            int hour,minute;
+            hour = time.getHour();
+            minute = time.getMinute();
+
+            int radio = smoke.getCheckedRadioButtonId();
+            if(radio == R.id.smokingyes){
+                display2.setText("Yes");
+            }
+            else{
+                display2.setText("No");
+            }
+
+            display.setText("Name: " + name.getText().toString() + " Number: " + number.getText().toString() +
+                    " Group Size: " + group.getText().toString() + " Date: " + day + "" + month + "" + year
+            + " Timing: " + hour + ":" + minute + " Smoking: " + display2);
+
+            Log.i("MyActivity", "onClick: ");
+            Toast.makeText(MainActivity.this, display.getText().toString(), Toast.LENGTH_LONG).show()
         }
     });
 
-        display.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("MyActivity", "onClick: ");
-                Toast.makeText(MainActivity.this, display.getText().toString(), Toast.LENGTH_LONG).show();
 
-                }
-
-        });
 
 
         reset.setOnClickListener(new View.OnClickListener() {
