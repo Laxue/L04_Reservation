@@ -2,6 +2,7 @@ package sg.edu.rp.c346.id22017723.reservation_book;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
         }
     });
+
+        display.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("MyActivity", "onClick: ");
+                Toast.makeText(MainActivity.this, display.getText().toString(), Toast.LENGTH_LONG).show();
+
+                }
+
+        });
+
 
         reset.setOnClickListener(new View.OnClickListener() {
         @Override
